@@ -31,8 +31,7 @@ public final class MessageView: UIView, MessageTextViewListener {
     internal var heightOffset: CGFloat = 0
     
     internal override init(frame: CGRect) {
-        super.init(frame: frame)
-
+        super.init(frame: frame)      
         backgroundColor = .white
 
         addSubview(leftButton)
@@ -284,19 +283,19 @@ public final class MessageView: UIView, MessageTextViewListener {
         let leftButtonMaxX = (showLeftButton ? leftButtonFrame.maxX : 0)
         let textViewFrame = CGRect(
             x: (showLeftButton ? leftButtonMaxX + leftButtonInset : 0),
-            y: textViewY,
-            width: safeBounds.width - leftButtonMaxX - rightButtonSize.width - rightButtonInset,
-            height: textViewHeight
+            y: 5,
+            width: safeBounds.width - leftButtonMaxX - rightButtonSize.width - rightButtonInset - 10,
+            height: textViewHeight - 8
         )
         textView.frame = textViewFrame
 
         // adjust by bottom offset so content is flush w/ text view
         let rightButtonFrame = CGRect(
-            x: textViewFrame.maxX,
-            y: textViewMaxY - rightButtonSize.height + rightButton.bottomHeightOffset - textViewInset.bottom,
+            x: textViewFrame.maxX + 3,
+            y: textViewMaxY - rightButtonSize.height + rightButton.bottomHeightOffset - textViewInset.bottom + 3,
             width: rightButtonSize.width,
             height: rightButtonSize.height
-        )
+        )        
         rightButton.frame = rightButtonFrame
 
         contentView?.frame = CGRect(
