@@ -283,7 +283,7 @@ public final class MessageView: UIView, MessageTextViewListener {
         let leftButtonMaxX = (showLeftButton ? leftButtonFrame.maxX : 0)
         let textViewFrame = CGRect(
             x: (showLeftButton ? leftButtonMaxX + leftButtonInset : 0),
-            y: 5,
+            y: 4,
             width: safeBounds.width - leftButtonMaxX - rightButtonSize.width - rightButtonInset - 10,
             height: textViewHeight - 8
         )
