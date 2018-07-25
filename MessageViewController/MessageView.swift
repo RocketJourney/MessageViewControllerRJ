@@ -274,7 +274,7 @@ public final class MessageView: UIView, MessageTextViewListener {
     // adjust by bottom offset so content is flush w/ text view
     let leftButtonFrame = CGRect(
       x: safeBounds.minX + leftButtonInset,
-      y: textViewMaxY - leftButtonSize.height + leftButton.bottomHeightOffset - textViewInset.bottom,
+      y: textViewMaxY - leftButtonSize.height + leftButton.bottomHeightOffset - textViewInset.bottom - 2,
       width: leftButtonSize.width,
       height: leftButtonSize.height
     )
@@ -283,16 +283,18 @@ public final class MessageView: UIView, MessageTextViewListener {
     let leftButtonMaxX = (showLeftButton ? leftButtonFrame.maxX : 0)
     let textViewFrame = CGRect(
       x: (showLeftButton ? leftButtonMaxX + leftButtonInset : 0),
-      y: 4,
+      y: textViewY,
       width: safeBounds.width - leftButtonMaxX - rightButtonSize.width - rightButtonInset - 10,
-      height: textViewHeight - 8
+      height: textViewHeight
     )
+    print("textViewHeight")
+    print(textViewHeight)
     textView.frame = textViewFrame
     
     // adjust by bottom offset so content is flush w/ text view
     let rightButtonFrame = CGRect(
       x: textViewFrame.maxX + 3,
-      y: textViewMaxY - rightButtonSize.height + rightButton.bottomHeightOffset - textViewInset.bottom + 3,
+      y: textViewMaxY - rightButtonSize.height + rightButton.bottomHeightOffset - textViewInset.bottom + 4,
       width: rightButtonSize.width,
       height: rightButtonSize.height
     )
@@ -337,7 +339,7 @@ public final class MessageView: UIView, MessageTextViewListener {
   }
   
   internal var textViewHeight: CGFloat {
-    return 40
+    return ceil(min(calculatedMaxHeight, textView.contentSize.height))
   }
   
   internal func updateEmptyTextStates() {
